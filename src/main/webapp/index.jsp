@@ -33,7 +33,7 @@
             var author = $("#author").val();
             var year = parseInt($("#year").val());
             var album = $("#album").val();
-            var country = parseFloat($("#country").val());
+            var country = $("#country").val();
 
             // Create a JSON object with Music properties
             var Music = {
@@ -115,7 +115,7 @@
         </tr>
         <tr>
             <td><label for="country">country:</label></td>
-            <td><input type="number" id="country" step="0.01"></td>
+            <td><input type="text" id="country"></td>
         </tr>
         <tr>
             <td></td>
