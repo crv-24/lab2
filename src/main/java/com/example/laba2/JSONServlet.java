@@ -11,8 +11,8 @@ import org.json.JSONObject;
 @WebServlet("/JSONServlet")
 public class JSONServlet extends HttpServlet {
 
-    // JSON filename to store Car objects
-    private static final String JSON_FILENAME = "cars.json";
+    // JSON filename to store Music objects
+    private static final String JSON_FILENAME = "music.json";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +32,7 @@ public class JSONServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            JSONObject jsonCar = new JSONObject();
+            JSONObject jsonMusic = new JSONObject();
             try {
                 BufferedReader reader = request.getReader();
                 String json = "";
@@ -49,17 +49,17 @@ public class JSONServlet extends HttpServlet {
                 String album = jsonObject.getString("album");
                 String country = jsonObject.getString("country");
 
-                jsonCar.put("name", name);
-                jsonCar.put("author", author);
-                jsonCar.put("year", year);
-                jsonCar.put("album", album);
-                jsonCar.put("country", country);
+                jsonMusic.put("name", name);
+                jsonMusic.put("author", author);
+                jsonMusic.put("year", year);
+                jsonMusic.put("album", album);
+                jsonMusic.put("country", country);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             JSONArray jsonArray = readJSONFile();
-            jsonArray.put(jsonCar);
+            jsonArray.put(jsonMusic);
             writeJSONFile(jsonArray);
 
             response.sendRedirect(request.getContextPath() + "/JSONServlet");
